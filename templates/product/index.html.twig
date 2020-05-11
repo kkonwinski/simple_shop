@@ -12,6 +12,7 @@
             <th scope="col">Price</th>
             <th scope="col">Qunatity</th>
             <th scope="col">Description</th>
+            <th scope="col">Actions</th>
         </tr>
         </thead>
         <tbody>
@@ -23,6 +24,11 @@
                 <td>{{ product.price }}</td>
                 <td>{{ product.quantity }}</td>
                 <td>{{ product.description }}</td>
+                <td>{{ product.description }}</td>
+                <td>
+                    <a href="#" class="btn btn-success">Dodaj</a>
+                    <a href="#" class="btn btn-danger">Usuń</a>
+                </td>
             </tr>
 
         {% endfor %}
