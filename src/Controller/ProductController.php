@@ -5,12 +5,21 @@ namespace App\Controller;
 use App\Entity\Product;
 use App\Form\ProductFormType;
 use App\Repository\ProductRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ProductController extends AbstractController
 {
+
+    private $em;
+
+    public function __construct(EntityManagerInterface $em)
+    {
+        $this->em = $em;
+    }
+
     /**
      * @Route("/", name="product_index")
      */
@@ -31,8 +40,23 @@ class ProductController extends AbstractController
         $form->handleRequest($request);
 
 
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $product = $form->getData();
+            $this->em->persist($product);
+            $this->em->flush();
+            return $this->redirectToRoute('product_index');
+        }
+
         return $this->render('product/new.html.twig', [
             'productForm' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("/show/{id}", name="show_product")
+     */
+    public function show(Product $product){
+        dd($product);
     }
 }
