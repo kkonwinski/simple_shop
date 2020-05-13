@@ -24,6 +24,8 @@ class ProductRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('p')
             ->orderBy('p.updatedAt', 'DESC')
+            ->leftJoin('p.warehouse', 'w')
+            ->addSelect('w')
             ->getQuery()
             ->getResult();
     }
