@@ -18,9 +18,9 @@ class ProductFormType extends AbstractType
     {
         $builder
             ->add('name',TextType::class)
-            ->add('description',TextareaType::class)
             ->add('price',IntegerType::class)
             ->add('quantity')
+            ->add('description',TextareaType::class)
             ->add('save',SubmitType::class);
     }
 

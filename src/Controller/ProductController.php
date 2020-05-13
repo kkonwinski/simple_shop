@@ -54,13 +54,29 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/show/{id}", name="show_product")
+     * @Route("/edit/{id}", name="edit_product")
      */
-    public function show(Product $product){
+    public function edit(Product $product,Request $request)
+    {
 //       $products= $product->find($product);
 
-       return $this->render('product/show.html.twig',[
-           'product'=>$product
-       ]);
+        $form = $this->createForm(ProductFormType::class, $product);
+        $form->handleRequest($request);
+
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $product = $form->getData();
+            $this->em->persist($product);
+            $this->em->flush();
+
+        return $this->render('product/edit.html.twig', [
+            'id' => $product->getId(),
+        ]);
     }
+        return $this->render('product/edit.html.twig',[
+            'productForm'=>$form->createView()
+        ]);
+    }
+
 }

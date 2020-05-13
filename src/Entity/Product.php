@@ -51,6 +51,16 @@ class Product
      */
     private $updatedAt;
 
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
