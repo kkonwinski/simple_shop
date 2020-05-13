@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5693574c6b0542077c2805b5c1e5f8e8",
+    "content-hash": "9b507ad3d255d45ec5a0abea42568886",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1787,6 +1787,62 @@
                 "tree"
             ],
             "time": "2020-03-30T09:00:40+00:00"
+        },
+        {
+            "name": "symfony/asset",
+            "version": "v5.0.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/asset.git",
+                "reference": "be35f49cf2cf1c54de30bc31d2c5ff3c1d880be8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/asset/zipball/be35f49cf2cf1c54de30bc31d2c5ff3c1d880be8",
+                "reference": "be35f49cf2cf1c54de30bc31d2c5ff3c1d880be8",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2.5"
+            },
+            "require-dev": {
+                "symfony/http-foundation": "^4.4|^5.0",
+                "symfony/http-kernel": "^4.4|^5.0"
+            },
+            "suggest": {
+                "symfony/http-foundation": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Asset\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Asset Component",
+            "homepage": "https://symfony.com",
+            "time": "2020-04-12T14:40:17+00:00"
         },
         {
             "name": "symfony/cache",

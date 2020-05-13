@@ -11,6 +11,7 @@
             <th scope="col">Price</th>
             <th scope="col">Qunatity</th>
             <th scope="col">Description</th>
+
         </tr>
         </thead>
         <tbody>
@@ -22,7 +23,16 @@
                 <td>{{ product.price }}</td>
                 <td>{{ product.quantity }}</td>
                 <td>{{ product.description|slice(0,30) }}</td>
+                <td>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Akcje</button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="{{ path('product_index') }}">Edytuj</a>
+                            <a class="dropdown-item" href="#">Usuń</a>
+                        </div>
+                    </div>
 
+                </td>
             </tr>
 
         {% endfor %}

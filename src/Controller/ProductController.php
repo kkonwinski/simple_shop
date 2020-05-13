@@ -57,6 +57,10 @@ class ProductController extends AbstractController
      * @Route("/show/{id}", name="show_product")
      */
     public function show(Product $product){
-        dd($product);
+//       $products= $product->find($product);
+
+       return $this->render('product/show.html.twig',[
+           'product'=>$product
+       ]);
     }
 }
