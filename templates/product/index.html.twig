@@ -2,17 +2,17 @@
 
 {% block title %}Hello ProductController!{% endblock %}
 {% block body %}
+    <div class="col-sm-12">
+        <table class="table table-dark">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Qunatity</th>
+                <th scope="col">Description</th>
 
-    <table class="table table-dark">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Price</th>
-            <th scope="col">Qunatity</th>
-            <th scope="col">Description</th>
-
-        </tr>
+            </tr>
         </thead>
         <tbody>
         {% for product in products %}
@@ -37,8 +37,8 @@
 
         {% endfor %}
         </tbody>
-    </table>
+        </table>
 
-
+    </div>
 {#    <a href="{{ path('product_new') }}" class="btn btn-primary stretched-link">Dodaj nowy produkt</a>#}
 {% endblock %}

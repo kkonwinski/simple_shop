@@ -1,10 +1,8 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 
-    {{ form_start(productForm) }}
+    {% include 'product/_form.html.twig' %}
 
-
-    {{ form_end(productForm) }}
 
 
 {% endblock body %}

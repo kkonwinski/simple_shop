@@ -25,7 +25,7 @@ class ProductController extends AbstractController
      */
     public function index(ProductRepository $product)
     {
-        $products = $product->findAll();
+        $products = $product->findProductByDate();
         return $this->render('product/index.html.twig', [
             'products' => $products
         ]);
@@ -56,9 +56,8 @@ class ProductController extends AbstractController
     /**
      * @Route("/edit/{id}", name="edit_product")
      */
-    public function edit(Product $product,Request $request)
+    public function edit(Product $product, Request $request)
     {
-//       $products= $product->find($product);
 
         $form = $this->createForm(ProductFormType::class, $product);
         $form->handleRequest($request);
@@ -70,13 +69,13 @@ class ProductController extends AbstractController
             $this->em->persist($product);
             $this->em->flush();
 
-        return $this->render('product/edit.html.twig', [
-            'id' => $product->getId(),
-        ]);
-    }
-        return $this->render('product/edit.html.twig',[
-            'productForm'=>$form->createView()
-        ]);
-    }
+            return $this->redirectToRoute('edit_product', [
+                'id' => $product->getId(),
+            ]);
 
+        }
+        return $this->render('product/edit.html.twig', [
+            'productForm' => $form->createView()
+        ]);
+    }
 }
