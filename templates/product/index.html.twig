@@ -23,7 +23,9 @@
                     <td><a href="{{ path('edit_product',{'id':product.id}) }}"> {{ product.name }}</a></td>
                     <td>{{ product.price }}</td>
                     <td>{{ product.quantity }}</td>
-                    <td>{{ product.warehouse.name }}</td>
+                    <td>
+                        <a href="{{ path('warehouse_show',{'id':product.warehouse.id}) }}"> {{ product.warehouse.name }}</a>
+                    </td>
                     <td>{{ product.description|slice(0,30) }}</td>
                     <td>
                         <div class="dropdown">

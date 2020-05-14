@@ -17,10 +17,11 @@ class ProductFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name',TextType::class)
-            ->add('price',IntegerType::class)
+            ->add('name', TextType::class)
+            ->add('price', IntegerType::class)
             ->add('quantity')
-            ->add('description',TextareaType::class)
+            ->add('description', TextareaType::class)
+            ->add('warehouse')
             ->add('save',SubmitType::class);
     }
 
