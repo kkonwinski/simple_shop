@@ -12,6 +12,12 @@ use Gedmo\Mapping\Annotation as Gedmo;
  */
 class ShoppingCart
 {
+    public function __construct()
+    {
+        $this->userId = 1;
+        $this->isActive = 'Y';
+    }
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()

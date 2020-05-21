@@ -3,9 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Product;
+use App\Entity\ShoppingCart;
 use App\Form\ProductFormType;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Psr\Container\ContainerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -76,7 +78,23 @@ class ProductController extends AbstractController
 
         }
         return $this->render('product/edit.html.twig', [
-            'productForm' => $form->createView()
+            'productForm' => $form->createView(),
+            'productId' => $product->getId()
         ]);
+    }
+
+    /**
+     * @Route ("/addToShoppingCart/{id}", name="add_to_shopping_cart",methods={"GET","POST"}, requirements={"id"="\d+"})
+     */
+    public function addToShoppingCart(Product $product)
+    {
+        $shoppingCart = new ShoppingCart();
+        $shoppingCart->setProductId($product->getId());
+        $this->em->persist($shoppingCart);
+        $this->em->flush();
+        return $this->redirectToRoute('edit_product', [
+            'id' => $product->getId(),
+        ]);
+
     }
 }
