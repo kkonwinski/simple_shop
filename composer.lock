@@ -4,7 +4,7 @@
     "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
     "This file is @generated automatically"
   ],
-  "content-hash": "f3708b4cc48fe2d7bdc2f3666af08df1",
+  "content-hash": "b2b0985359fbe1c6e1a97eb93d9bb0d4",
   "packages": [
     {
       "name": "behat/transliterator",
@@ -15,16 +15,16 @@
         "reference": "3c4ec1d77c3d05caa1f0bf8fb3aae4845005c7fc"
       },
       "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Transliterator/zipball/3c4ec1d77c3d05caa1f0bf8fb3aae4845005c7fc",
-                "reference": "3c4ec1d77c3d05caa1f0bf8fb3aae4845005c7fc",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "require-dev": {
-                "chuyskywalker/rolling-curl": "^3.1",
+        "type": "zip",
+        "url": "https://api.github.com/repos/Behat/Transliterator/zipball/3c4ec1d77c3d05caa1f0bf8fb3aae4845005c7fc",
+        "reference": "3c4ec1d77c3d05caa1f0bf8fb3aae4845005c7fc",
+        "shasum": ""
+      },
+      "require": {
+        "php": ">=5.3.3"
+      },
+      "require-dev": {
+        "chuyskywalker/rolling-curl": "^3.1",
                 "php-yaoi/php-yaoi": "^1.0",
                 "phpunit/phpunit": "^4.8.36|^6.3"
             },
@@ -3681,16 +3681,16 @@
                 "MIT"
             ],
             "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
+              {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+              },
+              {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+              }
             ],
-            "description": "Symfony Routing Component",
+          "description": "Symfony Routing Component",
           "homepage": "https://symfony.com",
           "keywords": [
             "router",
@@ -3700,6 +3700,89 @@
           ],
           "time": "2020-04-21T21:02:50+00:00"
         },
+    {
+      "name": "symfony/security-bundle",
+      "version": "v5.0.8",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/symfony/security-bundle.git",
+        "reference": "b26fa15f2f748430112731f51f2c3c70fc6bbe1a"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/symfony/security-bundle/zipball/b26fa15f2f748430112731f51f2c3c70fc6bbe1a",
+        "reference": "b26fa15f2f748430112731f51f2c3c70fc6bbe1a",
+        "shasum": ""
+      },
+      "require": {
+        "ext-xml": "*",
+        "php": "^7.2.5",
+        "symfony/config": "^4.4|^5.0",
+        "symfony/dependency-injection": "^4.4|^5.0",
+        "symfony/http-kernel": "^5.0",
+        "symfony/security-core": "^4.4|^5.0",
+        "symfony/security-csrf": "^4.4|^5.0",
+        "symfony/security-guard": "^4.4|^5.0",
+        "symfony/security-http": "^4.4.5|^5.0.5"
+      },
+      "conflict": {
+        "symfony/browser-kit": "<4.4",
+        "symfony/console": "<4.4",
+        "symfony/framework-bundle": "<4.4",
+        "symfony/ldap": "<4.4",
+        "symfony/twig-bundle": "<4.4"
+      },
+      "require-dev": {
+        "doctrine/doctrine-bundle": "^2.0",
+        "symfony/asset": "^4.4|^5.0",
+        "symfony/browser-kit": "^4.4|^5.0",
+        "symfony/console": "^4.4|^5.0",
+        "symfony/css-selector": "^4.4|^5.0",
+        "symfony/dom-crawler": "^4.4|^5.0",
+        "symfony/expression-language": "^4.4|^5.0",
+        "symfony/form": "^4.4|^5.0",
+        "symfony/framework-bundle": "^4.4|^5.0",
+        "symfony/process": "^4.4|^5.0",
+        "symfony/serializer": "^4.4|^5.0",
+        "symfony/translation": "^4.4|^5.0",
+        "symfony/twig-bridge": "^4.4|^5.0",
+        "symfony/twig-bundle": "^4.4|^5.0",
+        "symfony/validator": "^4.4|^5.0",
+        "symfony/yaml": "^4.4|^5.0",
+        "twig/twig": "^2.10|^3.0"
+      },
+      "type": "symfony-bundle",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "5.0-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Symfony\\Bundle\\SecurityBundle\\": ""
+        },
+        "exclude-from-classmap": [
+          "/Tests/"
+        ]
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Fabien Potencier",
+          "email": "fabien@symfony.com"
+        },
+        {
+          "name": "Symfony Community",
+          "homepage": "https://symfony.com/contributors"
+        }
+      ],
+      "description": "Symfony SecurityBundle",
+      "homepage": "https://symfony.com",
+      "time": "2020-04-22T00:36:07+00:00"
+    },
     {
       "name": "symfony/security-core",
       "version": "v5.0.8",
@@ -3833,6 +3916,125 @@
       "time": "2020-03-27T16:56:45+00:00"
     },
     {
+      "name": "symfony/security-guard",
+      "version": "v5.0.8",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/symfony/security-guard.git",
+        "reference": "9e9ebbd005ca5af051e57a47d46394357cdff1d8"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/symfony/security-guard/zipball/9e9ebbd005ca5af051e57a47d46394357cdff1d8",
+        "reference": "9e9ebbd005ca5af051e57a47d46394357cdff1d8",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^7.2.5",
+        "symfony/security-core": "^5.0",
+        "symfony/security-http": "^4.4.1|^5.0.1"
+      },
+      "require-dev": {
+        "psr/log": "~1.0"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "5.0-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Symfony\\Component\\Security\\Guard\\": ""
+        },
+        "exclude-from-classmap": [
+          "/Tests/"
+        ]
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Fabien Potencier",
+          "email": "fabien@symfony.com"
+        },
+        {
+          "name": "Symfony Community",
+          "homepage": "https://symfony.com/contributors"
+        }
+      ],
+      "description": "Symfony Security Component - Guard",
+      "homepage": "https://symfony.com",
+      "time": "2020-04-15T15:59:10+00:00"
+    },
+    {
+      "name": "symfony/security-http",
+      "version": "v5.0.8",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/symfony/security-http.git",
+        "reference": "052d81213d007c07e61c9c4407cfd34e67b9ed17"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/symfony/security-http/zipball/052d81213d007c07e61c9c4407cfd34e67b9ed17",
+        "reference": "052d81213d007c07e61c9c4407cfd34e67b9ed17",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^7.2.5",
+        "symfony/http-foundation": "^4.4.7|^5.0.7",
+        "symfony/http-kernel": "^4.4|^5.0",
+        "symfony/property-access": "^4.4|^5.0",
+        "symfony/security-core": "^4.4.8|^5.0.8"
+      },
+      "conflict": {
+        "symfony/security-csrf": "<4.4"
+      },
+      "require-dev": {
+        "psr/log": "~1.0",
+        "symfony/routing": "^4.4|^5.0",
+        "symfony/security-csrf": "^4.4|^5.0"
+      },
+      "suggest": {
+        "symfony/routing": "For using the HttpUtils class to create sub-requests, redirect the user, and match URLs",
+        "symfony/security-csrf": "For using tokens to protect authentication/logout attempts"
+      },
+      "type": "library",
+      "extra": {
+        "branch-alias": {
+          "dev-master": "5.0-dev"
+        }
+      },
+      "autoload": {
+        "psr-4": {
+          "Symfony\\Component\\Security\\Http\\": ""
+        },
+        "exclude-from-classmap": [
+          "/Tests/"
+        ]
+      },
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Fabien Potencier",
+          "email": "fabien@symfony.com"
+        },
+        {
+          "name": "Symfony Community",
+          "homepage": "https://symfony.com/contributors"
+        }
+      ],
+      "description": "Symfony Security Component - HTTP Integration",
+      "homepage": "https://symfony.com",
+      "time": "2020-04-06T10:40:56+00:00"
+    },
+    {
       "name": "symfony/service-contracts",
       "version": "v2.0.1",
       "source": {
@@ -3843,16 +4045,16 @@
       "dist": {
         "type": "zip",
         "url": "https://api.github.com/repos/symfony/service-contracts/zipball/144c5e51266b281231e947b51223ba14acf1a749",
-                "reference": "144c5e51266b281231e947b51223ba14acf1a749",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2.5",
-                "psr/container": "^1.0"
-            },
-            "suggest": {
-                "symfony/service-implementation": ""
-            },
+        "reference": "144c5e51266b281231e947b51223ba14acf1a749",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^7.2.5",
+        "psr/container": "^1.0"
+      },
+      "suggest": {
+        "symfony/service-implementation": ""
+      },
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -4183,16 +4385,16 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/twig-pack/zipball/8b278ea4b61fba7c051f172aacae6d87ef4be0e0",
-                "reference": "8b278ea4b61fba7c051f172aacae6d87ef4be0e0",
-                "shasum": ""
+              "url": "https://api.github.com/repos/symfony/twig-pack/zipball/8b278ea4b61fba7c051f172aacae6d87ef4be0e0",
+              "reference": "8b278ea4b61fba7c051f172aacae6d87ef4be0e0",
+              "shasum": ""
             },
-            "require": {
-                "php": "^7.0",
-                "symfony/twig-bundle": "*",
-                "twig/extra-bundle": "^2.12|^3.0",
-                "twig/twig": "^2.12|^3.0"
-            },
+          "require": {
+            "php": "^7.0",
+            "symfony/twig-bundle": "*",
+            "twig/extra-bundle": "^2.12|^3.0",
+            "twig/twig": "^2.12|^3.0"
+          },
           "type": "symfony-pack",
           "notification-url": "https://packagist.org/downloads/",
           "license": [
@@ -4305,16 +4507,16 @@
       "dist": {
         "type": "zip",
         "url": "https://api.github.com/repos/symfony/var-dumper/zipball/09de28632f16f81058a85fcf318397218272a07b",
-                "reference": "09de28632f16f81058a85fcf318397218272a07b",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2.5",
-                "symfony/polyfill-mbstring": "~1.0"
-            },
-            "conflict": {
-                "phpunit/phpunit": "<5.4.3",
-                "symfony/console": "<4.4"
+        "reference": "09de28632f16f81058a85fcf318397218272a07b",
+        "shasum": ""
+      },
+      "require": {
+        "php": "^7.2.5",
+        "symfony/polyfill-mbstring": "~1.0"
+      },
+      "conflict": {
+        "phpunit/phpunit": "<5.4.3",
+        "symfony/console": "<4.4"
             },
             "require-dev": {
                 "ext-iconv": "*",
