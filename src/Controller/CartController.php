@@ -42,17 +42,20 @@ class CartController extends AbstractController
     /**
      * @Route("/add/{id}", name="cart_add",requirements={"id"="\d+"})
      */
-    public function add($id, SessionInterface $session)
+    public function add($id, SessionInterface $session, ProductRepository $productRepository)
     {
+        $productQuantity = $productRepository->find($id);
+        //var_dump($productQuantity->getQuantity());
         $cart = $session->get('cart', []);
         if (!empty($cart[$id])) {
-            $cart[$id]++;
+            if ($cart[$id] != $productQuantity->getQuantity()) {
+                $cart[$id]++;
+            }
         } else {
             $cart[$id] = 1;
         }
 
         $session->set('cart', $cart);
-        //   dd($session->get('cart'));
         return $this->redirectToRoute('product_index');
     }
 
