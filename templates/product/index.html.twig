@@ -28,6 +28,11 @@
                     </td>
                     <td>{{ product.description|slice(0,30) }}</td>
                     <td>
+                        <div>
+                            <a href="{{ path('cart_add',{id:product.id}) }}" class="btn btn-success">Add to shopping
+                                cart</a>
+                            {#                            <a href="{{ path('add_to_shopping_cart',{id:product.id}) }}" class="btn btn-info ">Dodaj do koszyka</a>#}
+                        </div>
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Akcje

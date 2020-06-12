@@ -83,18 +83,5 @@ class ProductController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route ("/addToShoppingCart/{id}", name="add_to_shopping_cart",methods={"GET","POST"}, requirements={"id"="\d+"})
-     */
-    public function addToShoppingCart(Product $product)
-    {
-        $shoppingCart = new ShoppingCart();
-        $shoppingCart->setProductId($product->getId());
-        $this->em->persist($shoppingCart);
-        $this->em->flush();
-        return $this->redirectToRoute('edit_product', [
-            'id' => $product->getId(),
-        ]);
 
-    }
 }
