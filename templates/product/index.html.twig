@@ -2,19 +2,18 @@
 
 {% block title %}Hello ProductController!{% endblock %}
 {% block body %}
-    <div class="row">
-        {% for product in products %}
-            <div class="col-sm-3 d-flex justify-content-center">
+    {% for product in products %}
+        <div class="col-sm-3 d-flex justify-content-center">
 
-                <div class="card" style="width: 18rem;">
-                    {% if product.image %}
-                        <img src="{{ asset('uploads/images/'~ product.image) }}"
-                             class="card-img-top" alt="...">
-                    {% else %}
-                        <img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-                             class="card-img-top" alt="...">
-                    {% endif %}
-                    <div class="card-body">
+            <div class="card" style="width: 18rem;">
+                {% if product.image %}
+                    <img src="{{ asset('uploads/images/'~ product.image) }}"
+                         class="card-img-top" alt="...">
+                {% else %}
+                    <img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+                         class="card-img-top" alt="...">
+                {% endif %}
+                <div class="card-body">
                         <h5 class="card-title"><a
                                     href="{{ path('edit_product',{'id':product.id}) }}"> {{ product.name }}</a></h5>
                         <p class="card-text product-card-description">{{ product.description|slice(0,30) }}</p>
@@ -32,12 +31,11 @@
                                 <a class="dropdown-item" href="#">Usuń</a>
                             </div>
                         </div>
-                    </div>
                 </div>
             </div>
+        </div>
 
-        {% endfor %}
-    </div>
+    {% endfor %}
 
     {#    <a href="{{ path('product_new') }}" class="btn btn-primary stretched-link">Dodaj nowy produkt</a>#}
 {% endblock %}

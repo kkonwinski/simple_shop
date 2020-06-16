@@ -1,9 +1,11 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <div class="align-content-center">
-        {% include 'product/_form.html.twig' %}
-        <a href="{{ path('product_index') }}" class="btn btn-info">Back to products list</a>
+    <div class="col-md-12">
+        <div class="align-content-center">
+            {% include 'product/_form.html.twig' %}
+            <a href="{{ path('product_index') }}" class="btn btn-info">Back to products list</a>
 {#        <a href="{{ path('add_to_shopping_cart',{id:productId}) }}" class="btn btn-info add_to_cart_js">Dodaj do koszyka</a>#}
+        </div>
     </div>
 {% endblock %}
 {% block javascripts %}
