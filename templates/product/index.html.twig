@@ -17,7 +17,7 @@
                     <div class="card-body">
                         <h5 class="card-title"><a
                                     href="{{ path('edit_product',{'id':product.id}) }}"> {{ product.name }}</a></h5>
-                        <p class="card-text">{{ product.description|slice(0,30) }}</p>
+                        <p class="card-text product-card-description">{{ product.description|slice(0,30) }}</p>
                         <h5 class="card-title"> Price: {{ product.price }} zł</h5>
                         <a href="{{ path('cart_add',{id:product.id}) }}" class="btn btn-success">Add to shopping
                             cart</a>

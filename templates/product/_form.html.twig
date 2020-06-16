@@ -1,4 +1,8 @@
 {{ form_start(productForm) }}
 
-
+{{ form_row(productForm.image,{
+    attr:{
+        placeholder: 'Select product image'
+    }
+}) }}
     {{ form_end(productForm) }}
