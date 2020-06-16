@@ -17,3 +17,7 @@
 .card {
     margin-top: 2rem;
 }
+
+.card img {
+    height: 160px;
+}

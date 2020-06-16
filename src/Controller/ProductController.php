@@ -3,11 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Product;
-use App\Entity\ShoppingCart;
 use App\Form\ProductFormType;
 use App\Repository\ProductRepository;
+use App\Service\ImageUploader;
 use Doctrine\ORM\EntityManagerInterface;
-use Psr\Container\ContainerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -37,7 +36,7 @@ class ProductController extends AbstractController
     /**
      * @Route("/new",name="product_new")
      */
-    public function new(Request $request)
+    public function new(Request $request, ImageUploader $imageUploader)
     {
         $form = $this->createForm(ProductFormType::class);
         $form->handleRequest($request);
@@ -46,6 +45,14 @@ class ProductController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $product = $form->getData();
+            /** @var ImageUploader $imageFile */
+            $imageFile = $form->get('image')->getData();
+
+            if ($imageFile) {
+                $imageName = $imageUploader->upload($imageFile);
+                $product->setImage($imageName);
+
+            }
             $this->em->persist($product);
             $this->em->flush();
             return $this->redirectToRoute('product_index');
@@ -59,7 +66,7 @@ class ProductController extends AbstractController
     /**
      * @Route("/edit/{id}", name="edit_product")
      */
-    public function edit(Product $product, Request $request)
+    public function edit(Product $product, Request $request, ImageUploader $imageUploader)
     {
 
         $form = $this->createForm(ProductFormType::class, $product);
@@ -69,6 +76,15 @@ class ProductController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $product = $form->getData();
+            /** @var ImageUploader $imageFile */
+            $imageFile = $form['image']->getData();
+
+            if ($imageFile) {
+                $imageName = $imageUploader->upload($imageFile);
+                $product->setImage($imageName);
+
+            }
+
             $this->em->persist($product);
             $this->em->flush();
 

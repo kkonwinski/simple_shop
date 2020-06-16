@@ -56,6 +56,11 @@ class Product
      */
     private $warehouse;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $image;
+
     public function getCreatedAt()
     {
         return $this->createdAt;
@@ -127,6 +132,18 @@ class Product
     public function setWarehouse(?Warehouse $warehouse): self
     {
         $this->warehouse = $warehouse;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }

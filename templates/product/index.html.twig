@@ -7,8 +7,13 @@
             <div class="col-sm-3 d-flex justify-content-center">
 
                 <div class="card" style="width: 18rem;">
-                    <img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-                         class="card-img-top" alt="...">
+                    {% if product.image %}
+                        <img src="{{ asset('uploads/images/'~ product.image) }}"
+                             class="card-img-top" alt="...">
+                    {% else %}
+                        <img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+                             class="card-img-top" alt="...">
+                    {% endif %}
                     <div class="card-body">
                         <h5 class="card-title"><a
                                     href="{{ path('edit_product',{'id':product.id}) }}"> {{ product.name }}</a></h5>
