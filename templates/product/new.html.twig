@@ -6,3 +6,9 @@
 
 
 {% endblock body %}
+{% block javascripts %}
+
+    {{ parent() }}
+    <script src="{{ asset('js/uploadImage.js') }}"></script>
+
+{% endblock %}

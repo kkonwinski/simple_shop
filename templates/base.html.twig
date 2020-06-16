@@ -62,13 +62,13 @@
     <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.js') }}"></script>
     <script src="{{ asset('js/bootstrap.bundle.js') }}"></script>
-    <script>
+    {#    <script>#}
 
-        $('.custom-file-input').on('change', function (event) {
-            var inputFile = event.currentTarget;
-            $(inputFile).parent().find('.custom-file-label').html(inputFile.files[0].name);
-        })
-    </script>
+    {#        $('.custom-file-input').on('change', function (event) {#}
+    {#            var inputFile = event.currentTarget;#}
+    {#            $(inputFile).parent().find('.custom-file-label').html(inputFile.files[0].name);#}
+    {#        })#}
+    {#    </script>#}
 
 {% endblock %}
 </body>
