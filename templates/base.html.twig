@@ -38,9 +38,31 @@
             </li>
 
         </ul>
-        <div class="nav-item d-flex align-items-center shopping-cart-ico">
-            <a class="fa fa-shopping-cart" href="{{ path('cart') }}"> ({{ app.session.get('cart')|length }})</a>
+        <div class="user-nav d-flex  align-items-center">
+            {% if app.user %}
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown ">
+                        {#                        <span class="fa fa-user-circle-o"></span>#}
+                        <a class="nav-link dropdown-toggle fa fa-user-circle-o" href="#" id="navbarDropdown"
+                           role="button"
+                           data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            {{ app.user.email }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ path('app_logout') }}" class="btn btn-info">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+                <div class="nav-item  align-items-center shopping-cart-ico">
+                    <a class="fa fa-shopping-cart" href="{{ path('cart') }}"> ({{ app.session.get('cart')|length }})</a>
+                </div>
+            {% else %}
+                <a class="" href="{{ path('app_register') }}" class="btn btn-info">Registry</a>
+                <a class="" href="{{ path('app_login') }}" class="btn btn-info">Login</a>
+            {% endif %}
         </div>
+
         {#        <form class="form-inline my-2 my-lg-0">#}
         {#            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">#}
         {#            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>#}

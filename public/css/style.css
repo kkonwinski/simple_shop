@@ -25,3 +25,9 @@
 .product-card-description {
     height: 50px;
 }
+
+.user-nav {
+    margin: 0px 30px;
+    width: 270px;
+    justify-content: space-around;
+}

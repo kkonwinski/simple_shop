@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -50,6 +52,16 @@ class User implements UserInterface
      */
     private $updatedAt;
 
+    /**
+     * @ORM\OneToMany(targetEntity=UserInfo::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $userInfos;
+
+    public function __construct()
+    {
+        $this->userInfos = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -84,7 +96,7 @@ class User implements UserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        $roles[] = 'ROLE_ADMIN';
 
         return array_unique($roles);
     }
@@ -137,6 +149,37 @@ class User implements UserInterface
     public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * @return Collection|UserInfo[]
+     */
+    public function getUserInfos(): Collection
+    {
+        return $this->userInfos;
+    }
+
+    public function addUserInfo(UserInfo $userInfo): self
+    {
+        if (!$this->userInfos->contains($userInfo)) {
+            $this->userInfos[] = $userInfo;
+            $userInfo->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUserInfo(UserInfo $userInfo): self
+    {
+        if ($this->userInfos->contains($userInfo)) {
+            $this->userInfos->removeElement($userInfo);
+            // set the owning side to null (unless already changed)
+            if ($userInfo->getUser() === $this) {
+                $userInfo->setUser(null);
+            }
+        }
+
+        return $this;
     }
 
 
