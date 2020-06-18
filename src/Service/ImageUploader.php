@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 
-class ImageUploader
+class ImageUploader extends \Symfony\Component\HttpFoundation\File\UploadedFile
 {
     private $targetDirectory;
     private $slugger;

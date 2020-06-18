@@ -24,6 +24,10 @@ class ProductController extends AbstractController
 
     /**
      * @Route("/", name="product_index")
+     * @param ProductRepository $product
+     * @param PaginatorInterface $paginator
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function index(ProductRepository $product, PaginatorInterface $paginator, Request $request)
     {
@@ -36,6 +40,9 @@ class ProductController extends AbstractController
 
     /**
      * @Route("/new",name="product_new")
+     * @param Request $request
+     * @param ImageUploader $imageUploader
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function new(Request $request, ImageUploader $imageUploader)
     {
@@ -66,6 +73,11 @@ class ProductController extends AbstractController
 
     /**
      * @Route("/edit/{id}", name="edit_product")
+     * @param Product $product
+     * @param Request $request
+     * @param ImageUploader $imageUploader
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @var ImageUploader $imageFile
      */
     public function edit(Product $product, Request $request, ImageUploader $imageUploader)
     {
