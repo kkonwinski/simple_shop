@@ -7,6 +7,7 @@ use App\Form\ProductFormType;
 use App\Repository\ProductRepository;
 use App\Service\ImageUploader;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,12 +25,12 @@ class ProductController extends AbstractController
     /**
      * @Route("/", name="product_index")
      */
-    public function index(ProductRepository $product)
+    public function index(ProductRepository $product, PaginatorInterface $paginator, Request $request)
     {
 
         $products = $product->findProductByDate();
         return $this->render('product/index.html.twig', [
-            'products' => $products
+            'products' => $paginator->paginate($products, $request->query->getInt('page', 1), 4)
         ]);
     }
 

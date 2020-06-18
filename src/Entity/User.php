@@ -17,6 +17,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  */
 class User implements UserInterface
 {
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -60,6 +61,8 @@ class User implements UserInterface
     public function __construct()
     {
         $this->userInfos = new ArrayCollection();
+        $this->setRoles(['ROLE_ADMIN']);
+        $this->userInfos;
     }
 
     public function getId(): ?int
@@ -96,7 +99,7 @@ class User implements UserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_ADMIN';
+        $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
     }
