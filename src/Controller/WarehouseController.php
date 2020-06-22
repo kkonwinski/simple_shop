@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Entity\Warehouse;
 use App\Form\WarehouseType;
 use App\Repository\WarehouseRepository;
@@ -10,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 /**
  * @Route("/warehouse")
@@ -17,6 +19,15 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class WarehouseController extends AbstractController
 {
+
+
+    private $security;
+
+    public function __construct(Security $security)
+    {
+        $this->security = $security;
+    }
+
     /**
      * @Route("/", name="warehouse_index", methods={"GET"})
      */
@@ -37,6 +48,8 @@ class WarehouseController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $warehouse->setUser($this->security->getUser());
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($warehouse);
             $entityManager->flush();

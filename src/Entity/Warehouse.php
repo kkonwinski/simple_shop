@@ -57,6 +57,12 @@ class Warehouse
      */
     private $product;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="warehouses")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
     public function __construct()
     {
         $this->product = new ArrayCollection();
@@ -160,5 +166,17 @@ class Warehouse
     public function __toString()
     {
         return $this->getName();
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
     }
 }

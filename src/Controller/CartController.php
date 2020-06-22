@@ -2,12 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Repository\ProductRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 /**
  * @Route("/cart")
@@ -15,21 +17,36 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class CartController extends AbstractController
 {
+    private $security;
+
+    public function __construct(Security $security)
+    {
+        $this->security = $security;
+    }
+
     /**
      * @Route("/", name="cart")
      */
     public function index(SessionInterface $session, ProductRepository $productRepository)
     {
+        // $session->remove('cart');
         $cart = $session->get('cart', []);
+
         $cartWithData = [];
+
         foreach ($cart as $id => $quantity) {
+
+
             $cartWithData[] = [
+
                 'product' => $productRepository->find($id),
-                'quantity' => $quantity
+                'quantity' => $quantity,
+                'user' => $cart['user']
             ];
         }
         $total = 0;
         foreach ($cartWithData as $item) {
+
             $totalItem = $item['product']->getPrice() * $item['quantity'];
             $total += $totalItem;
         }
@@ -47,8 +64,9 @@ class CartController extends AbstractController
     public function add($id, SessionInterface $session, ProductRepository $productRepository)
     {
         $productQuantity = $productRepository->find($id);
-        //var_dump($productQuantity->getQuantity());
+
         $cart = $session->get('cart', []);
+        $cart['user'] = $this->security->getUser();
         if (!empty($cart[$id])) {
             if ($cart[$id] != $productQuantity->getQuantity()) {
                 $cart[$id]++;

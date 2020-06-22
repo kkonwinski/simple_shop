@@ -12,17 +12,21 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 
 class ProductController extends AbstractController
 {
 
     private $em;
+    private $security;
 
-    public function __construct(EntityManagerInterface $em)
+    public function __construct(EntityManagerInterface $em, Security $security)
     {
         $this->em = $em;
+        $this->security = $security;
     }
+
 
     /**
      * @Route("/", name="product_index")
@@ -65,6 +69,7 @@ class ProductController extends AbstractController
                 $product->setImage($imageName);
 
             }
+            $product->setUser($this->security->getUser());
             $this->em->persist($product);
             $this->em->flush();
             return $this->redirectToRoute('product_index');

@@ -58,11 +58,23 @@ class User implements UserInterface
      */
     private $userInfos;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $products;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Warehouse::class, mappedBy="user", orphanRemoval=true)
+     */
+    private $warehouses;
+
     public function __construct()
     {
         $this->userInfos = new ArrayCollection();
         $this->setRoles(['ROLE_ADMIN']);
         $this->userInfos;
+        $this->products = new ArrayCollection();
+        $this->warehouses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -179,6 +191,68 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($userInfo->getUser() === $this) {
                 $userInfo->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Product[]
+     */
+    public function getProducts(): Collection
+    {
+        return $this->products;
+    }
+
+    public function addProduct(Product $product): self
+    {
+        if (!$this->products->contains($product)) {
+            $this->products[] = $product;
+            $product->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProduct(Product $product): self
+    {
+        if ($this->products->contains($product)) {
+            $this->products->removeElement($product);
+            // set the owning side to null (unless already changed)
+            if ($product->getUser() === $this) {
+                $product->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Warehouse[]
+     */
+    public function getWarehouses(): Collection
+    {
+        return $this->warehouses;
+    }
+
+    public function addWarehouse(Warehouse $warehouse): self
+    {
+        if (!$this->warehouses->contains($warehouse)) {
+            $this->warehouses[] = $warehouse;
+            $warehouse->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWarehouse(Warehouse $warehouse): self
+    {
+        if ($this->warehouses->contains($warehouse)) {
+            $this->warehouses->removeElement($warehouse);
+            // set the owning side to null (unless already changed)
+            if ($warehouse->getUser() === $this) {
+                $warehouse->setUser(null);
             }
         }
 
