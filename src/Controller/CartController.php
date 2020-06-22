@@ -29,19 +29,18 @@ class CartController extends AbstractController
      */
     public function index(SessionInterface $session, ProductRepository $productRepository)
     {
-        // $session->remove('cart');
+
         $cart = $session->get('cart', []);
 
         $cartWithData = [];
 
         foreach ($cart as $id => $quantity) {
 
-
             $cartWithData[] = [
 
                 'product' => $productRepository->find($id),
                 'quantity' => $quantity,
-                'user' => $cart['user']
+                'user' => $this->security->getUser()
             ];
         }
         $total = 0;
@@ -66,7 +65,7 @@ class CartController extends AbstractController
         $productQuantity = $productRepository->find($id);
 
         $cart = $session->get('cart', []);
-        $cart['user'] = $this->security->getUser();
+//        $cart['user'] = $this->security->getUser();
         if (!empty($cart[$id])) {
             if ($cart[$id] != $productQuantity->getQuantity()) {
                 $cart[$id]++;
@@ -76,7 +75,8 @@ class CartController extends AbstractController
         }
 
         $session->set('cart', $cart);
-        return $this->redirectToRoute('product_index');
+
+        return $this->redirectToRoute('cart');
     }
 
     /**

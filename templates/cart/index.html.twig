@@ -17,10 +17,10 @@
             <tbody>
             {% for item in items %}
                 <tr>
-                    {#                    <td>{{ item.product.name }}</td>#}
-                    {#                    <td>{{ item.product.price }}</td>#}
-                    {#                    <td>{{ item.quantity }}</td>#}
-                    {#                    <td>{{ item.quantity * item.product.price }} zł</td>#}
+                    <td>{{ item.product.name }}</td>
+                    <td>{{ item.product.price }}</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.quantity * item.product.price }} zł</td>
                     <td><a href="{{ path('cart_remove',{'id':item.product.id}) }}" class="btn btn-danger btn-sm"><i
                                     class="fa fa-trash"></i>
                         </a>
