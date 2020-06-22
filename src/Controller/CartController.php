@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\ProductRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -10,6 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/cart")
+ * @IsGranted("IS_AUTHENTICATED_FULLY")
  */
 class CartController extends AbstractController
 {

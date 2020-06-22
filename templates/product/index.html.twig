@@ -8,15 +8,19 @@
 
             <div class="card" style="width: 18rem;">
                 {% if product.image %}
-                    <img src="{{ asset('uploads/images/'~ product.image) }}"
+                    <img src="{{ asset('uploads/images/'~ product.image)|imagine_filter('my_thumb') }}"
                          class="card-img-top" alt="...">
                 {% else %}
                     <img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
                          class="card-img-top" alt="...">
                 {% endif %}
                 <div class="card-body">
-                    <h5 class="card-title"><a
-                                href="{{ path('edit_product',{'id':product.id}) }}"> {{ product.name }}</a></h5>
+                    <h5 class="card-title">
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <a href="{{ path('edit_product',{'id':product.id}) }}"> {{ product.name }}</a></h5>
+                    {% else %}
+                        <a href="{{ path('show_product',{'id':product.id}) }}"> {{ product.name }}</a></h5>
+                    {% endif %}
                     <p class="card-text product-card-description">{{ product.description|slice(0,30) }}</p>
                     <h5 class="card-title"> Price: {{ product.price }} zł</h5>
                     {% if app.user %}

@@ -8,9 +8,11 @@ use App\Repository\ProductRepository;
 use App\Service\ImageUploader;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+
 
 class ProductController extends AbstractController
 {
@@ -24,6 +26,7 @@ class ProductController extends AbstractController
 
     /**
      * @Route("/", name="product_index")
+     *
      * @param ProductRepository $product
      * @param PaginatorInterface $paginator
      * @param Request $request
@@ -43,6 +46,7 @@ class ProductController extends AbstractController
      * @param Request $request
      * @param ImageUploader $imageUploader
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function new(Request $request, ImageUploader $imageUploader)
     {
@@ -78,6 +82,7 @@ class ProductController extends AbstractController
      * @param ImageUploader $imageUploader
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      * @var ImageUploader $imageFile
+     * @IsGranted("IS_AUTHENTICATED_FULLY")
      */
     public function edit(Product $product, Request $request, ImageUploader $imageUploader)
     {
@@ -109,6 +114,17 @@ class ProductController extends AbstractController
         return $this->render('product/edit.html.twig', [
             'productForm' => $form->createView(),
             'productId' => $product->getId()
+        ]);
+    }
+
+    /**
+     * @Route("/show/{id}", name="show_product")
+     */
+    public function show(Product $product)
+    {
+
+        return $this->render('product/show.html.twig', [
+            'product' => $product
         ]);
     }
 

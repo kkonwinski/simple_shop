@@ -84,11 +84,27 @@
     "gedmo/doctrine-extensions": {
         "version": "v2.4.40"
     },
+    "imagine/imagine": {
+        "version": "1.2.3"
+    },
     "knplabs/knp-components": {
         "version": "v2.3.6"
     },
     "knplabs/knp-paginator-bundle": {
         "version": "v5.2.0"
+    },
+    "liip/imagine-bundle": {
+        "version": "1.8",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.8",
+            "ref": "1d42bc3f713130582e6e0c475c49bc327ab0a2a2"
+        },
+        "files": [
+            "config/packages/liip_imagine.yaml",
+            "config/routes/liip_imagine.yaml"
+        ]
     },
     "nikic/php-parser": {
         "version": "v4.4.0"
@@ -273,6 +289,9 @@
     "symfony/polyfill-php80": {
         "version": "v1.17.0"
     },
+    "symfony/process": {
+        "version": "v5.0.10"
+    },
     "symfony/profiler-pack": {
         "version": "v1.0.4"
     },
@@ -324,6 +343,9 @@
         "version": "v5.0.8"
     },
     "symfony/string": {
+        "version": "v5.0.10"
+    },
+    "symfony/templating": {
         "version": "v5.0.10"
     },
     "symfony/translation": {
