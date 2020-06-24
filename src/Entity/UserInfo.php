@@ -184,4 +184,9 @@ class UserInfo
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->getUser()->getUsername();
+    }
 }
