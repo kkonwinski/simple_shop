@@ -55,8 +55,7 @@ class OrderController extends AbstractController
         $this->em->persist($order);
         $this->em->flush();
 
-
-        //  $this->session->remove('cart');
+        $this->session->remove('cart');
         return $this->render('order/index.html.twig', [
             'controller_name' => 'OrderController',
         ]);

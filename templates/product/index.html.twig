@@ -4,44 +4,48 @@
 {% block body %}
 
     {% for product in products %}
-        <div class="col-sm-3 d-flex justify-content-center">
+        {% if product.quantity!=0 %}
+            <div class="col-sm-3 d-flex justify-content-center">
 
-            <div class="card" style="width: 18rem;">
-                {% if product.image %}
-                    <img src="{{ asset('uploads/images/'~ product.image)|imagine_filter('my_thumb') }}"
-                         class="card-img-top" alt="...">
-                {% else %}
-                    <img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-                         class="card-img-top" alt="...">
-                {% endif %}
-                <div class="card-body">
-                    <h5 class="card-title">
-                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                        <a href="{{ path('edit_product',{'id':product.id}) }}"> {{ product.name }}</a></h5>
+                <div class="card" style="width: 18rem;">
+                    {% if product.image %}
+                        <img src="{{ asset('uploads/images/'~ product.image)|imagine_filter('my_thumb') }}"
+                             class="card-img-top" alt="...">
                     {% else %}
-                        <a href="{{ path('show_product',{'id':product.id}) }}"> {{ product.name }}</a></h5>
+                        <img src="https://images.unsplash.com/photo-1526947425960-945c6e72858f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+                             class="card-img-top" alt="...">
                     {% endif %}
-                    <p class="card-text product-card-description">{{ product.description|slice(0,30) }}</p>
-                    <h5 class="card-title"> Price: {{ product.price }} zł</h5>
-                    {% if app.user %}
-                        <a href="{{ path('cart_add',{id:product.id}) }}" class="btn btn-success">Add to shopping
-                            cart</a>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <a href="{{ path('edit_product',{'id':product.id}) }}"> {{ product.name }}</a></h5>
+                        {% else %}
+                            <a href="{{ path('show_product',{'id':product.id}) }}"> {{ product.name }}</a></h5>
+                        {% endif %}
+                        <p class="card-text product-card-description">{{ product.description|slice(0,30) }}</p>
+                        <h5 class="card-title"> Price: {{ product.price }} zł</h5>
+
+                        <h5 class="card-title"> Quantity: {{ product.quantity }}</h5>
+
+                        {% if app.user %}
+                            <a href="{{ path('cart_add',{id:product.id}) }}" class="btn btn-success">Add to shopping
+                                cart</a>
 
 
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Akcje
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="{{ path('product_index') }}">Edytuj</a>
-                                <a class="dropdown-item" href="#">Usuń</a>
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Akcje
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="{{ path('product_index') }}">Edytuj</a>
+                                    <a class="dropdown-item" href="#">Usuń</a>
+                                </div>
                             </div>
-                        </div>
-                    {% endif %}
+                        {% endif %}
+                    </div>
                 </div>
             </div>
-        </div>
-
+        {% endif %}
     {% endfor %}
     <div class="container d-flex justify-content-center mt-5">
         <div class="row">
