@@ -15,6 +15,7 @@
             </tr>
             </thead>
             <tbody>
+
             {% for item in items %}
                 <tr>
                     <td>{{ item.product.name }}</td>
@@ -26,7 +27,9 @@
                         </a>
                     </td>
                 </tr>
+
             {% endfor %}
+
             </tbody>
             <tfoot>
             <tr>
@@ -37,6 +40,10 @@
             </tfoot>
 
         </table>
+        <div class="row offset-10">
+            <a href="{{ path('new_order') }}" class="fa fa-truck btn btn-success"> Przejdź do zamówienia</a>
+
+        </div>
         {#    {% elseif %}#}
     {% else %}
         Cart empty !!!!

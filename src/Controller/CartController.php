@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Order;
 use App\Entity\User;
 use App\Repository\ProductRepository;
+use App\Repository\UserRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -17,12 +19,7 @@ use Symfony\Component\Security\Core\Security;
  */
 class CartController extends AbstractController
 {
-    private $security;
 
-    public function __construct(Security $security)
-    {
-        $this->security = $security;
-    }
 
     /**
      * @Route("/", name="cart")
@@ -40,7 +37,6 @@ class CartController extends AbstractController
 
                 'product' => $productRepository->find($id),
                 'quantity' => $quantity,
-                'user' => $this->security->getUser()
             ];
         }
         $total = 0;
@@ -76,7 +72,7 @@ class CartController extends AbstractController
 
         $session->set('cart', $cart);
 
-        return $this->redirectToRoute('cart');
+        return $this->redirectToRoute('product_index');
     }
 
     /**
