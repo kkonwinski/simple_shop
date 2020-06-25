@@ -35,13 +35,16 @@ class AccountController extends AbstractController
     public function index(Request $request)
     {
         $users = $this->userRepository->find($this->security->getUser());
-
-        $form = $this->createForm(UserInfoType::class, $this->userInfoRepository->find($users->getId()));
+        $getUser = $this->userInfoRepository->findOneBy(['user' => $users->getId()]);
+        $form = $this->createForm(UserInfoType::class, $getUser);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $userInfo = $form->getData();
-
+            if (!$getUser) {
+                $userInfo->setUser($this->security->getUser());
+            }
             $this->em->persist($userInfo);
+
             $this->em->flush();
 
             return $this->redirectToRoute('account');
