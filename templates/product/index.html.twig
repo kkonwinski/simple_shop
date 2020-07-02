@@ -17,11 +17,11 @@
                     {% endif %}
                     <div class="card-body">
                         <h5 class="card-title">
-                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                            <a href="{{ path('edit_product',{'id':product.id}) }}"> {{ product.name }}</a></h5>
-                        {% else %}
+                            {#                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}#}
+                            {#                            <a href="{{ path('edit_product',{'id':product.id}) }}"> {{ product.name }}</a></h5>#}
+                            {#                        {% else %}#}
                             <a href="{{ path('show_product',{'id':product.id}) }}"> {{ product.name }}</a></h5>
-                        {% endif %}
+                        {#                        {% endif %}#}
                         <p class="card-text product-card-description">{{ product.description|slice(0,30) }}</p>
                         <h5 class="card-title"> Price: {{ product.price }} zł</h5>
 

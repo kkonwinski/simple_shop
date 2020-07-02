@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\User;
 use App\Entity\UserInfo;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -10,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Security\Core\Security;
 
 class UserInfoType extends AbstractType
 {
@@ -23,18 +25,20 @@ class UserInfoType extends AbstractType
                 'required' => false
             ])
             ->add('lastName', TextType::class, [
-                'required' => true
+                'required' => false
             ])
             ->add('city', TextType::class, [
-                'required' => true
+                'required' => false
             ])
             ->add('address', TextType::class, [
-                'required' => true
+                'required' => false
             ])
             ->add('phone', TextType::class, [
-                'required' => true
+                'required' => false
             ])
-            ->add('nickName', TextType::class)
+            ->add('nickName', TextType::class, [
+                'required' => false
+            ])
             ->add('www', UrlType::class, [
                 'required' => false
             ])

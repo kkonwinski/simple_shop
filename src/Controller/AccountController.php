@@ -7,18 +7,23 @@ use App\Form\UserInfoType;
 use App\Repository\UserInfoRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 
+/**
+ * Class AccountController
+ * @package App\Controller
+ * @IsGranted("IS_AUTHENTICATED_FULLY")
+ */
 class AccountController extends AbstractController
 {
 
     private $security;
     private $userRepository;
     private $em;
-
     private $userInfoRepository;
 
     public function __construct(Security $security, EntityManagerInterface $em, UserRepository $userRepository, UserInfoRepository $userInfoRepository)
