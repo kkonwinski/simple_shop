@@ -38,11 +38,38 @@
             </div>
             <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="profile-tab">
 
-                {{ form_start(userInfo) }}
-                {{ form_row(userInfo.user,{
-                    'value': app.user.email
-                }) }}
-                {{ form_end(userInfo) }}
+                <div class="col-md-12">
+                    {{ form_start(userInfo) }}
+
+                    {{ form_row(userInfo.user,{
+                        'value': app.user.email
+                    }) }}
+                    {{ form_row(userInfo.firstName,{
+                        'label':"Your first name*"
+                    }) }}
+                    {{ form_row(userInfo.lastName,{
+                        'label':"Your last name*"
+                    }) }}
+                    {{ form_row(userInfo.city,{
+                        'label':"City*"
+                    }) }}
+                    {{ form_row(userInfo.address,{
+                        'label':"Address*"
+                    }) }}
+                    {{ form_row(userInfo.phone,{
+                        'label':"Your phone number*"
+                    }) }}
+                    {{ form_row(userInfo.nickName,{
+                        'label':"Your nickname*"
+                    }) }}
+                    {{ form_row(userInfo.www,{
+                        'label':"Your website"
+                    }) }}
+                    <div class="form-group">
+                        <button class="btn btn-success">{{ button_label|default('Update account') }}</button>
+                    </div>
+                    {{ form_end(userInfo) }}
+                </div>
             </div>
             <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="contact-tab">...</div>
             <div class="tab-pane fade" id="warehouses" role="tabpanel" aria-labelledby="contact-tab">...</div>

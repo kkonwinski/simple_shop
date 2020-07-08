@@ -4,13 +4,36 @@
 
 {% block body %}
 
-  <div class="col-md-12">
-    {{ form_start(userInfo) }}
-    {{ form_errors(userInfo) }}
+    <div class="col-md-12">
+        {{ form_start(userInfo) }}
 
-    {{ form_row(userInfo.user,{
-      'value': app.user.email
-    }) }}
-    {{ form_end(userInfo) }}
-  </div>
+        {{ form_row(userInfo.user,{
+            'value': app.user.email
+        }) }}
+        {{ form_row(userInfo.firstName,{
+            'label':"Your first name*"
+        }) }}
+        {{ form_row(userInfo.lastName,{
+            'label':"Your last name*"
+        }) }}
+        {{ form_row(userInfo.city,{
+            'label':"City*"
+        }) }}
+        {{ form_row(userInfo.address,{
+            'label':"Address*"
+        }) }}
+        {{ form_row(userInfo.phone,{
+            'label':"Your phone number*"
+        }) }}
+        {{ form_row(userInfo.nickName,{
+            'label':"Your nickname*"
+        }) }}
+        {{ form_row(userInfo.www,{
+            'label':"Your website"
+        }) }}
+        <div class="form-group">
+            <button class="btn btn-success">{{ button_label|default('Go to payment') }}</button>
+        </div>
+        {{ form_end(userInfo) }}
+    </div>
 {% endblock %}

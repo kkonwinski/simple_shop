@@ -41,8 +41,7 @@ class UserInfoType extends AbstractType
             ])
             ->add('www', UrlType::class, [
                 'required' => false
-            ])
-            ->add('save', SubmitType::class);
+            ]);
 
     }
 
