@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use App\Service\GetAllegroApiToken;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -73,14 +74,33 @@ class User implements UserInterface
      */
     private $orders;
 
-    public function __construct()
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $clientId;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $clientSecret;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $accessToken;
+
+    private $allegroApiToken;
+
+    public function __construct(GetAllegroApiToken $allegroApiToken)
     {
+
         $this->userInfos = new ArrayCollection();
         $this->setRoles(['ROLE_ADMIN']);
         $this->userInfos;
         $this->products = new ArrayCollection();
         $this->warehouses = new ArrayCollection();
         $this->orders = new ArrayCollection();
+        $this->allegroApiToken = $allegroApiToken;
     }
 
     public function getId(): ?int
@@ -299,5 +319,47 @@ class User implements UserInterface
     public function __toString()
     {
         return $this->getEmail();
+    }
+
+    public function getClientId(): ?string
+    {
+        return $this->clientId;
+    }
+
+    public function setClientId(?string $clientId): self
+    {
+        $this->clientId = $clientId;
+
+        return $this;
+    }
+
+    public function getClientSecret(): ?string
+    {
+        return $this->clientSecret;
+    }
+
+    public function setClientSecret(?string $clientSecret): self
+    {
+        $this->clientSecret = $clientSecret;
+
+        return $this;
+    }
+
+    public function getAccessToken(): ?string
+    {
+        return $this->accessToken;
+    }
+
+    public function setAccessToken(?string $accessToken): self
+    {
+        $this->accessToken = $accessToken;
+
+        return $this;
+    }
+
+    public function checkAccessToken()
+    {
+        return $this->allegroApiToken->getAccessToken($this->getUser());
+
     }
 }

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Product;
 use App\Form\ProductFormType;
 use App\Repository\ProductRepository;
+use App\Service\GetAllegroApiToken;
 use App\Service\ImageUploader;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
